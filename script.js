@@ -9,12 +9,19 @@ function playerPlay() {
 }
 
 function rps() {
-    let computerSelection = computerPlay();
-    let playerSelection = prompt("Enter your move : ");
 
     console.log(`The computer plays ${computerSelection}`)
 
-    if () {
-        
+    if (computerSelection === 'paper') {
+        console.log("Sorry, you lost. Paper beats Rock!")
+    } else if (computerSelection === 'scissors') {
+        console.log("Congrats, you won. Rock beats Scissors!")
+    } else if (computerSelection === 'rock') {
+        console.log("Its a tie!")
     }
 }
+
+const playerSelection = 'rock';
+const computerSelection = computerPlay();
+console.log(rps())
+
