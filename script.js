@@ -4,9 +4,6 @@ function computerPlay() {
     return moves[ranIndx];
 }
 
-function playerPlay() {
-    console.log("What do you pick, rock paper or scissors?")
-}
 
 function rps(playerSelection, computerSelection) {
 
@@ -65,6 +62,9 @@ function game() {
         
         let computerSelection = computerPlay();
         let playerSelection = prompt('Make a move: rock, paper, or scissors: ');
+        while (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+            playerSelection = prompt('Invalid move: please enter either rock, paper or scissors - ')
+        }
         console.log(computerSelection);
         let roundWinner = rps(computerSelection, playerSelection);
         console.log("roundWinner = " + roundWinner);
@@ -80,8 +80,10 @@ function game() {
 
     if (playerScore > computerScore) {
         console.log('You won the game!') 
-    } else {
+    } else if (playerScore < computerScore) {
         console.log('Sorry, better luck next time.')
+    } else if (playerScore === computerScore) {
+
     }
     console.log(`The score was player: ${playerScore} computer: ${computerScore} with ${ties} ties.`)
 }
