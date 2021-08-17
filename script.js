@@ -88,4 +88,4 @@ function game() {
     console.log(`The score was player: ${playerScore} computer: ${computerScore} with ${ties} ties.`)
 }
 
-game();
+// game();
