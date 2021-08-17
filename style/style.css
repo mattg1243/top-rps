@@ -1,3 +1,23 @@
-.title {
-    font-family: Tangerine;
+.headerdiv {
+    display: flex;
+    justify-content: center;
+    font-family: fantasy;
+    font-size: 36;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.choicebtn {
+    display: flex;
+    justify-content: center;
+    border: transparent;
+    color: blue;
+    font-family: cursive;
+    font-size: 36px;
+    padding: 5px;
+    margin: 10px;
 }
