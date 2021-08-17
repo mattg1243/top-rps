@@ -1,3 +1,5 @@
+const message = document.querySelector('.messagebox')
+
 function computerPlay() {
     let moves = ['rock', 'paper', 'scissors'];
     let ranIndx = Math.floor(Math.random() * moves.length);
@@ -5,21 +7,23 @@ function computerPlay() {
 }
 
 
-function rps(playerSelection, computerSelection) {
+function rps(playerSelection) {
 
     let winner;
+
+    computerSelection = computerPlay();
 
     console.log(`The computer plays ${computerSelection}`)
 
     if (playerSelection === 'rock') {
         if (computerSelection === 'paper') {
-            console.log("Sorry, you lost. Paper beats Rock!")
+            message.textContent = "Sorry, you lost. Paper beats Rock!"
             winner = 'computer';
         } else if (computerSelection === 'scissors') {
-            console.log("Congrats, you won. Rock beats Scissors!")
+            message.textContent = "Congrats, you won. Rock beats Scissors!"
             winner = 'player';
         } else if (computerSelection === 'rock') {
-            console.log("Its a tie!")
+            message.textContent = "Its a tie!"
             winner = 'tie';
         }
     }
@@ -53,21 +57,46 @@ function rps(playerSelection, computerSelection) {
     return winner
 }
 
+const rockSelect = document.querySelector('#rockSelect');
+const paperSelect = document.querySelector('#paperSelect');
+const scissorsSelect = document.querySelector('#scissorsSelect');
+
+rockSelect.addEventListener('click', () => {
+    playerChoice = 'rock';
+    rps(playerChoice);
+})
+
+paperSelect.addEventListener('click', () => {
+    playerChoice = 'paper';
+    rps(playerChoice);
+})
+
+scissorsSelect.addEventListener('click', () => {
+    playerChoice = 'scissors';
+    rps(playerChoice);
+})
+
 
 function game() {
 
     let playerScore = 0, computerScore = 0, ties = 0;     
     
-    for (let i=0; i < 5; i++) {
+    for (let i=0; i < Infinity; i++) {
+
+        rockSelect.addEventListener('click', () => {
+            playerChoice = 'rock';
+            rps(playerChoice);
+        })
         
-        let computerSelection = computerPlay();
-        let playerSelection = prompt('Make a move: rock, paper, or scissors: ');
-        while (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
-            playerSelection = prompt('Invalid move: please enter either rock, paper or scissors - ')
-        }
-        console.log(computerSelection);
-        let roundWinner = rps(computerSelection, playerSelection);
-        console.log("roundWinner = " + roundWinner);
+        paperSelect.addEventListener('click', () => {
+            playerChoice = 'paper';
+            rps(playerChoice);
+        })
+        
+        scissorsSelect.addEventListener('click', () => {
+            playerChoice = 'scissors';
+            rps(playerChoice);
+        })
         
         if (roundWinner === 'computer') {
             computerScore++;
@@ -89,6 +118,35 @@ function game() {
 }
 
 
+let playerChoice, computerChoice;
 
+rockSelect() {
+    playerChoice = 'rock';
+    rps(playerChoice);
+}
 
-// game();
+paperSelect() {
+    playerChoice = 'paper';
+    rps(playerChoice);
+}
+
+scissorsSelect() {
+    playerChoice = 'scissors';
+    rps(playerChoice);
+}
+
+let i = 0;
+
+while (i = 0) {
+    winner = rps(playerChoice, computerChoice);
+
+    if (winner === 'computer') {
+        computerScore++;
+    } else if (winner === 'player') {
+        playerScore++;
+    } else if (winner === 'tie') {
+        ties++;
+    }
+}
+
+game();
