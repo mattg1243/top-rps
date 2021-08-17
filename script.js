@@ -1,4 +1,19 @@
-const message = document.querySelector('.messagebox')
+const topmessage = document.querySelector('#topmsgbox')
+const bottommessage = document.querySelector('#bottommsgbox');
+const choiceButtons = document.querySelectorAll('.choicebtn');
+const rockSelect = document.querySelector('#rockSelect');
+const paperSelect = document.querySelector('#paperSelect');
+const scissorsSelect = document.querySelector('#scissorsSelect');
+
+let playerChoice;
+let playerScore = 0, computerScore = 0, ties = 0;
+
+choiceButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        playerChoice = button.textContent;
+        rps(playerChoice);
+    })
+})
 
 function computerPlay() {
     let moves = ['rock', 'paper', 'scissors'];
@@ -13,54 +28,77 @@ function rps(playerSelection) {
 
     computerSelection = computerPlay();
 
-    console.log(`The computer plays ${computerSelection}`)
+    topmessage.textContent = `The computer plays ${computerSelection}`;
 
     if (playerSelection === 'rock') {
         if (computerSelection === 'paper') {
-            message.textContent = "Sorry, you lost. Paper beats Rock!"
+            // message.textContent = "Sorry, you lost. Paper beats Rock!"
             winner = 'computer';
         } else if (computerSelection === 'scissors') {
-            message.textContent = "Congrats, you won. Rock beats Scissors!"
+            // message.textContent = "Congrats, you won. Rock beats Scissors!"
             winner = 'player';
         } else if (computerSelection === 'rock') {
-            message.textContent = "Its a tie!"
+            // message.textContent = "Its a tie!"
             winner = 'tie';
         }
     }
 
     if (playerSelection === 'paper') {
         if (computerSelection === 'paper') {
-            console.log("Its a tie!")
+            // message.textContent = "Its a tie!";
             winner = 'tie';
         } else if (computerSelection === 'scissors') {
-            console.log("Sorry, you lost. Scissors beats Paper!")
+            // message.textContent = "Sorry, you lost. Scissors beats Paper!";
             winner = 'computer';
         } else if (computerSelection === 'rock') {
-            console.log("Congrats, you won. Paper beats Rock!")
+            // message.textContent = "Congrats, you won. Paper beats Rock!";
             winner = 'player';
         }
     }
 
     if (playerSelection === 'scissors') {
         if (computerSelection === 'paper') {
-            console.log("Congrats, you won. Scissor beats Paper!")
+            // message.textContent = "Congrats, you won. Scissor beats Paper!";
             winner = 'player';
         } else if (computerSelection === 'scissors') {
-            console.log("Its a tie!")
+            // message.textContent = "Its a tie!";
             winner = 'tie';
         } else if (computerSelection === 'rock') {
-            console.log("Sorry, you lost. Rock beats Scissors!")
+            // message.textContent = "Sorry, you lost. Rock beats Scissors!";
             winner = 'computer';
         }
     }
 
+    if (winner === 'player') {
+        playerScore++;
+    } else if  (winner === 'computer') {
+        computerScore++;
+    } else if (winner === 'tie') {
+        ties++;
+    }
+
+    bottommessage.textContent = `The score is Player : ${playerScore}  Computer : ${computerScore}  Ties : ${ties}`;
     return winner
 }
+/*
+window.addEventListener()
 
-const rockSelect = document.querySelector('#rockSelect');
-const paperSelect = document.querySelector('#paperSelect');
-const scissorsSelect = document.querySelector('#scissorsSelect');
+function rockBtnClick() {
+    playerChoice = 'rock';
+    rps(playerChoice);
+}
 
+function paperBtnClick() {
+    playerChoice = 'paper';
+    rps(playerChoice);
+}
+
+function scissorsBtnClick() {
+    playerChoice = 'scissors';
+    rps(playerChoice);
+}
+
+/*
 rockSelect.addEventListener('click', () => {
     playerChoice = 'rock';
     rps(playerChoice);
@@ -83,17 +121,17 @@ function game() {
     
     for (let i=0; i < Infinity; i++) {
 
-        rockSelect.addEventListener('click', () => {
+        rockBtnClick.addEventListener('click', () => {
             playerChoice = 'rock';
             rps(playerChoice);
         })
         
-        paperSelect.addEventListener('click', () => {
+        paperBtnClick.addEventListener('click', () => {
             playerChoice = 'paper';
             rps(playerChoice);
         })
         
-        scissorsSelect.addEventListener('click', () => {
+        scissorsBtnClick.addEventListener('click', () => {
             playerChoice = 'scissors';
             rps(playerChoice);
         })
@@ -120,20 +158,8 @@ function game() {
 
 let playerChoice, computerChoice;
 
-rockSelect() {
-    playerChoice = 'rock';
-    rps(playerChoice);
-}
 
-paperSelect() {
-    playerChoice = 'paper';
-    rps(playerChoice);
-}
 
-scissorsSelect() {
-    playerChoice = 'scissors';
-    rps(playerChoice);
-}
 
 let i = 0;
 
@@ -148,5 +174,4 @@ while (i = 0) {
         ties++;
     }
 }
-
-game();
+*/

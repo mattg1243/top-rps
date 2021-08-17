@@ -15,6 +15,7 @@
     display: flex;
     justify-content: center;
     border: transparent;
+    border-radius: 50%;
     color: blue;
     font-family: cursive;
     font-size: 36px;
@@ -22,8 +23,11 @@
     margin: 10px;
 }
 
-button :hover {
-    background: red;
+.choicebtn:hover {
+    border-color: black;
+    font-weight: bold;
+    font-size: 38px;
+    cursor: pointer;
 }
 
 .messagebox {
@@ -31,5 +35,7 @@ button :hover {
     justify-content: center;
     font-family: monospace;
     font-size: 24px;
+    margin-top: 20px;
+    padding: 5px;
 
 }
